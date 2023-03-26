@@ -1,13 +1,12 @@
-import { Routes, Route } from 'react-router-dom'
+
+// import { Routes, Route } from 'react-router-dom'
+import { Navigation } from './components/Navigation/Navigation'
 
 function App() {
   return (
-    <>
-      <body id="body" data-spy="scroll" data-target=".one-page-header" class="demo-lightbox-gallery">
-        {/* <Routes> <Route path='/' element={<Home />} </Routes> */}
-      </body>
+    <Navigation />
 
-    </>
+
   )
 }
 
