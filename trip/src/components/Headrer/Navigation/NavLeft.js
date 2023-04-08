@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 export const NavLeft = () => {
     return (
         <div className="col-md-5 no-side-padding">
@@ -5,13 +6,13 @@ export const NavLeft = () => {
                 <div className="menu-container">
                     <ul className="nav navbar-nav">
                         <li className="page-scroll home">
-                            <a href="#body">Home</a>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li className="page-scroll">
+                            <Link to="services">Services</Link>
                         </li>
                         <li className="page-scroll">
                             <a href="#about">About</a>
-                        </li>
-                        <li className="page-scroll">
-                            <a href="#services">Services</a>
                         </li>
                         <li className="page-scroll">
                             <a href="#projects">Projects</a>
