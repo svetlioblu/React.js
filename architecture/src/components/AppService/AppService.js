@@ -11,7 +11,7 @@ export const AppService = () => {
                 <ListItems />
 
                 {/* <!-- modal popup window --> */}
-                <div className="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div className="modal fade bs-example-modal-lg" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <button aria-hidden="true" data-dismiss="modal" className="close" type="button"><i className="fa fa-times"></i></button>
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
