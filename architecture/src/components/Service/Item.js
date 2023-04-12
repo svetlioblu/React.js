@@ -1,5 +1,7 @@
-export const Item = () => {
 
+
+export const Item = ({listItems}) => {
+console.log(listItems);
     return (
         <div className="col-md-3 service service-2">
             <div className="service-in img-hover-2 equal-height-column">

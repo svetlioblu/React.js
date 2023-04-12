@@ -1,6 +1,6 @@
 import { ListItems } from "./ListItems"
 
-export const AppService = () => {
+export const Service = () => {
 
     return (
         <section id="about">

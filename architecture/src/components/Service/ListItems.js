@@ -7,14 +7,14 @@ import * as dataService from "../../services/dataService.js"
 export const ListItems = () => {
     const [listItems, setlistItems] = useState([])
     useEffect(() => {
-        const getAllServices = dataService.getAll()
-        setlistItems(getAllServices)
-        
+        dataService.getAll()
+            .then(setlistItems)
+
     }, [])
 
     return (
         <div className="row equal-height-columns">
-            <Item />
+            {listItems.map(x => <Item key={x._id} listItems={listItems} />)}
         </div>
     )
 }
