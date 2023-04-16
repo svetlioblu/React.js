@@ -1,15 +1,18 @@
 
 
-export const Item = ({listItems}) => {
-console.log(listItems);
+export const Item = ({ label, icon,
+    description, _id,
+    detilesTitle, detailsImg,
+    detailsText, onDetailsClick }) => {
+
     return (
         <div className="col-md-3 service service-2">
             <div className="service-in img-hover-2 equal-height-column">
-                <span aria-hidden="true" className="icon-picture icon"></span>
+                <span aria-hidden="true" className={`icon-${icon} icon`}></span>
                 {/* Up to 16 char */}
-                <h3>Exterior Design</h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Omom sociis natoque penatibus.</p>
-                <button className="service-btn" data-toggle="modal" data-target="#myModal">Read More</button>
+                <h3>{label}</h3>
+                <p>{description}</p>
+                <button className="service-btn" data-toggle="modal" data-target="#myModal" onClick={() => onDetailsClick(_id, detailsImg, detilesTitle, detailsText)}>Read More</button>
             </div>
         </div>
     )

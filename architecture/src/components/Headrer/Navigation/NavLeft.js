@@ -5,17 +5,12 @@ export const NavLeft = () => {
             <div className="left">
                 <div className="menu-container">
                     <ul className="nav navbar-nav">
+                        
                         <li className="page-scroll home">
                             <Link to="/">Home</Link>
                         </li>
                         <li className="page-scroll">
                             <Link to="services">Services</Link>
-                        </li>
-                        <li className="page-scroll">
-                            <a href="#about">About</a>
-                        </li>
-                        <li className="page-scroll">
-                            <a href="#projects">Projects</a>
                         </li>
                     </ul>
                 </div>
