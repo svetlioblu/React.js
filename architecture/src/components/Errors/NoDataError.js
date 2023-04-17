@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-export const Error404 = () => {
+export const NoDataError = () => {
     const navigate = useNavigate()
     return (
         <div className="container">
@@ -7,10 +7,10 @@ export const Error404 = () => {
             <div className="row">
                 <div className="col-md-8 col-md-offset-2">
                     <div className="error-v2">
-                        <span className="error-v2-title">404</span>
+                        <span className="error-v2-title">Add Services</span>
                         <span>That’s an error!</span>
-                        <p>The requested URL was not found on this server. <br /> That’s all we know.</p>
-                        <button className="btn-u btn-u-dark rounded-2x" onClick={() => { navigate('/') }}>Go Back  <i className="fa fa-reply-all"></i></button>
+                        <p>There were no data fond. <br /> Please, Log in/Register and add some services.</p>
+                        <button className="btn-u btn-u-dark rounded-2x" onClick={() => { navigate('/') }}>Go Back  <i className="fa fa-clock-o"></i></button>
                     </div>
                 </div>
             </div>

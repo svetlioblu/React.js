@@ -5,7 +5,7 @@ import { useAuthContext } from '../../contexts/AuthContext'
 export const LogIn = () => {
     const [userLogIn, setuserLogIn] = useState({
         email: '',
-        pass: ''
+        password: ''
     })
 
     const { onLogin } = useAuthContext()
@@ -24,7 +24,7 @@ export const LogIn = () => {
                     </div>
                     <div className="input-group margin-bottom-20">
                         <span className="input-group-addon"><i className="fa fa-lock"></i></span>
-                        <input type="text" name='pass' className="form-control" placeholder="Password" value={userLogIn.pass} onChange={(e) => { setuserLogIn(state => ({ ...state, [e.target.name]: e.target.value })) }} />
+                        <input type="text" name='password' className="form-control" placeholder="Password" value={userLogIn.password} onChange={(e) => { setuserLogIn(state => ({ ...state, [e.target.name]: e.target.value })) }} />
                     </div>
                     <hr />
                     <div className="checkbox">

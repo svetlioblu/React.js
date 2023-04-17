@@ -456,11 +456,17 @@ p {
 .one-page-header.architecture-nav .navbar-toggle:hover .icon-bar {
     background: #c94645 !important;
 }
-
+.one-page-header.architecture-nav .navbar-nav > li > div {
+	margin-top: 22px;
+}
 @media (max-width: 1200px) {
 	/*fixing the list items below 1200px*/
 	.one-page-header.architecture-nav .navbar-nav > li > a {
 	    padding: 15px 20px;
+	}
+	.one-page-header.architecture-nav .navbar-nav > li > div {
+	    padding: 15px 20px;
+		margin-top: 2px;
 	}
 }
 

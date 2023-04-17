@@ -1,17 +1,31 @@
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+import * as userService from "../services/userService.js"
 
 export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
+    const navigate = useNavigate()
+    const [userAuth, setUserAuth] = useState({})
 
-
-    const onLogin = (e, userLogIn) => {
+    const onLogin = async (e, userLogIn) => {
         e.preventDefault()
-        console.log(`${userLogIn.email}  ${userLogIn.pass} `);
+
+        const result = await userService.logIn(userLogIn)
+        setUserAuth(result)
+        navigate('/')
+    }
+
+    const onLogOut = async (token) => {
+        console.log('logged out')
+        await userService.logOut(token)
     }
 
     const contextValues = {
-        onLogin
+        onLogin,
+        onLogOut,
+        userAuth
     }
 
     return (

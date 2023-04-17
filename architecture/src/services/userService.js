@@ -1,14 +1,39 @@
-// const baseUrl = 'http://localhost:3030/data/architecture'
+const baseUrl = 'http://localhost:3030'
 
-// const getAll = async () => {
-//     const responce = await fetch(baseUrl)
-//         .catch(err => console.log(err))
-//     const result = await responce.json()
+const logIn = async (data) => {
+    const responce = await fetch(`${baseUrl}/users/login`,
+        {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .catch(err => console.log(err))
 
-//     return result
-// }
+    const result = await responce.json()
 
+    return result
+}
 
-// export {
-//     getAll
-// }
+const logOut = async (token) => {
+    console.log(token)
+    const responce = await fetch(`${baseUrl}/users/logout`, {
+        method: "GET",
+        headers: {
+            'X-Authorization': token
+            // 'content-type': 'application/json'
+        },
+        // body: JSON.stringify(data)
+    })
+        .catch(err => console.log(err))
+
+    const result = await responce
+    
+    return result
+}
+
+export {
+    logIn,
+    logOut
+}
