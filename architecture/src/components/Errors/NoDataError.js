@@ -17,7 +17,7 @@ export const NoDataError = () => {
                         <p>There were no data fond. <br /> Please, Log in/Register and add some services.</p>
                         {!userAuth.accessToken ?
                             (<button className="btn-u btn-u-dark rounded-2x" onClick={() => { navigate('/logIn') }}>Log in</button>)
-                            :(<button className="btn-u btn-u-danger btn-lg">Add Services</button>)                    
+                            :(<button className="btn-u btn-u-danger btn-lg" onClick={() => { navigate('/create') }}>Add Services</button>)                    
                         }
 
                     </div>

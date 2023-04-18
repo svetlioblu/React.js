@@ -8,7 +8,22 @@ const getAll = async () => {
     return result
 }
 
+const create = async (data, token) => {
+    const responce = await fetch(baseUrl, {
+        method: "POST",
+        headers: {
+            'content-type': 'application/json',
+            'X-Authorization': token
+        },
+        body: JSON.stringify(data)
+    })
+        .catch(err => console.log(err))
+
+    const result = await responce.json()
+    return result
+}
 
 export {
-    getAll
+    getAll,
+    create
 }

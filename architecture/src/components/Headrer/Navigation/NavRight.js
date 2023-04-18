@@ -18,6 +18,9 @@ export const NavRight = () => {
                                 <li className="page-scroll home">
                                     <Link to="/Register">Register</Link>
                                 </li>
+                                <li className="page-scroll home">
+                                <div ><i className="fa fa-user"></i> Guest</div>
+                                </li>
                             </>)
                             : (<>
                                 <li className="page-scroll">
