@@ -19,18 +19,18 @@ export const NavRight = () => {
                                     <Link to="/Register">Register</Link>
                                 </li>
                                 <li className="page-scroll home">
-                                <div ><i className="fa fa-user"></i> Guest</div>
+                                    <div ><i className="fa fa-user"></i> Guest</div>
                                 </li>
                             </>)
                             : (<>
                                 <li className="page-scroll">
-                                    <a href="#team">My projects</a>
+                                    <Link to="/myProjects">My projects</Link>
                                 </li>
                                 <li className="page-scroll home">
                                     <Link to="/" onClick={() => { onLogOut(userAuth.accessToken) }}>Log out</Link>
                                 </li>
                                 <li className="page-scroll home">
-                                <div ><i className="fa fa-user"></i> {userAuth.email}</div>
+                                    <div ><i className="fa fa-user"></i> {userAuth.email}</div>
                                 </li>
                             </>)
                         }

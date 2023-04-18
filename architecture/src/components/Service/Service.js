@@ -2,21 +2,20 @@ import { useEffect, useState } from "react"
 
 
 import { ListItems } from "./ListItems"
-import * as dataService from "../../services/dataService.js"
 import { ModalDetails } from "./ModalDetails"
 import { NoDataError } from "../Errors/NoDataError"
-
+import * as dataService from "../../services/dataService.js"
+import { useDataContext } from "../../contexts/DataContext"
 
 
 export const Service = () => {
-   
-    const [listItems, setlistItems] = useState([])
+    const { listItems, setlistItems } = useDataContext()
     const [details, setDetails] = useState({})
-    // To do If no entries !
+    
     useEffect(() => {
         dataService.getAll()
             .then(setlistItems)
-    }, [])
+    }, [setlistItems])
 
     const onDetailsClick = (id, img, title, text) => {
         setDetails({ id, img, title, text })

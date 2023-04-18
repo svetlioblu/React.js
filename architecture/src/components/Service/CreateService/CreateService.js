@@ -38,9 +38,8 @@ export const CreateService = () => {
             <div className="reg-block">
                 <div className="reg-block-header">
                     <h2>Create a Service</h2>
-                    {noEntry && <p style={{"color":"red"}}>There are Empty Fields !</p>}
-                    {longLabel && <p style={{"color":"red"}}>The Label should be less than 16 chars !</p>}
-
+                    {noEntry && <p style={{ "color": "red" }}>There are Empty Fields !</p>}
+                    {longLabel && <p style={{ "color": "red" }}>The Label should be less than 16 chars !</p>}
                 </div>
                 <form onSubmit={(e) => { onCreate(e, createData) }}>
                     <div className="input-group margin-bottom-10">
