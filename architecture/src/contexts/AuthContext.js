@@ -12,19 +12,28 @@ export const AuthProvider = ({ children }) => {
     const onLogin = async (e, userLogIn) => {
         e.preventDefault()
 
-        const result = await userService.logIn(userLogIn)
-        setUserAuth(result)
-        navigate('/')
+        await userService.logIn(userLogIn)
+        .then(setUserAuth)
+        navigate('/services')
     }
 
     const onLogOut = async (token) => {
-        console.log('logged out')
+       
         await userService.logOut(token)
+            .then(setUserAuth({}))
     }
 
+    const onRegister = async (e, userRegister) => {
+        e.preventDefault()
+
+        await userService.register(userRegister)
+        .then(setUserAuth)
+        navigate('/services')
+    }
     const contextValues = {
         onLogin,
         onLogOut,
+        onRegister,
         userAuth
     }
 

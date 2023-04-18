@@ -17,23 +17,34 @@ const logIn = async (data) => {
 }
 
 const logOut = async (token) => {
-    console.log(token)
-    const responce = await fetch(`${baseUrl}/users/logout`, {
+
+    await fetch(`${baseUrl}/users/logout`, {
         method: "GET",
         headers: {
             'X-Authorization': token
-            // 'content-type': 'application/json'
-        },
-        // body: JSON.stringify(data)
+        }
     })
         .catch(err => console.log(err))
+}
 
-    const result = await responce
-    
+const register = async (data) => {
+    const responce = await fetch(`${baseUrl}/users/register`,
+        {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .catch(err => console.log(err))
+
+    const result = await responce.json()
+
     return result
 }
 
 export {
     logIn,
-    logOut
+    logOut,
+    register
 }

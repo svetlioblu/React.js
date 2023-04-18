@@ -1,5 +1,6 @@
 // import styles from './Login.module.css'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuthContext } from '../../contexts/AuthContext'
 
 export const LogIn = () => {
@@ -15,7 +16,7 @@ export const LogIn = () => {
             <div className="reg-block">
                 <div className="reg-block-header">
                     <h2>Sign In</h2>
-                    <p>Don't Have Account? Click <a className="color-green" href="page_registration1.html">Sign Up</a> to registration.</p>
+                    <p>Don't Have Account? Click <Link to="/Register">Sign Up</Link> to registration.</p>
                 </div>
                 <form onSubmit={(e) => { onLogin(e, userLogIn) }}>
                     <div className="input-group margin-bottom-20">
