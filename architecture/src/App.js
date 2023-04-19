@@ -14,6 +14,7 @@ import { Footer } from './components/Footer/Footer'
 
 import { AuthProvider } from './contexts/AuthContext'
 import { DataProvider } from './contexts/DataContext'
+import { RouteGuard } from './components/common/RouteGuard'
 
 
 function App() {
@@ -28,9 +29,21 @@ function App() {
           <Route path='*' element={<Error404 />} />
           <Route path='/' element={<Home />} />
           <Route path='/services' element={<Service />} />
-          <Route path='/create' element={<CreateService />} />
-          <Route path='/myProjects' element={<MyProjects />} />
-          <Route path='/edit' element={<EditService />} />
+          <Route path='/create' element={
+            <RouteGuard>
+              <CreateService />
+            </RouteGuard>
+          } />
+          <Route path='/myProjects' element={
+            <RouteGuard>
+              <MyProjects />
+            </RouteGuard>
+          } />
+          <Route path='/edit' element={
+            <RouteGuard>
+              <EditService />
+            </RouteGuard>
+          } />
 
 
 

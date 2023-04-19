@@ -53,7 +53,7 @@ export const EditService = () => {
                     </div>
                     <div className="input-group margin-bottom-10">
                         <span className="input-group-addon"><i className="fa fa-tasks"></i></span>
-                        <textarea rows="2" name='description' className="form-control" placeholder="Short description" value={createData.description} onChange={(e) => { setcreateData(state => ({ ...state, [e.target.name]: e.target.value })) }} ></textarea>
+                        <textarea rows="2" maxlength="140" name='description' className="form-control" placeholder="Short description" value={createData.description} onChange={(e) => { setcreateData(state => ({ ...state, [e.target.name]: e.target.value })) }} ></textarea>
                     </div>
                     <div className="input-group margin-bottom-10">
                         <span className="input-group-addon"><i className="fa fa-caret-square-o-down"></i></span>
