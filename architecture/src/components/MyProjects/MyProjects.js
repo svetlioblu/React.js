@@ -1,5 +1,4 @@
-import { useState } from "react"
-
+import { useNavigate } from "react-router-dom"
 import { ListItems } from "../Service/ListItems"
 import { ModalDetails } from "../Service/ModalDetails"
 import { NoDataError } from "../Errors/NoDataError"
@@ -9,21 +8,28 @@ import { useDataContext } from "../../contexts/DataContext"
 import { useAuthContext } from "../../contexts/AuthContext"
 
 export const MyProjects = () => {
-    const { listItems, setlistItems } = useDataContext()
+    const navigate = useNavigate()
+    const { listItems, setDetails,seteditId } = useDataContext()
     const { userAuth } = useAuthContext()
-    const [details, setDetails] = useState({})
-
-
-    const myListItems = listItems.filter(x => x._ownerId === userAuth._id)
-
+    let myListItems = listItems.filter(x => x._ownerId === userAuth._id)
 
     const onDetailsClick = (id, img, title, text) => {
         setDetails({ id, img, title, text })
     }
 
+    const onDelete = async (id) => {
+        await dataService.del(id, userAuth.accessToken)
+        navigate('/services')
+    }
+
+    const onEdit = (id) => {
+        seteditId(id)
+        navigate('/edit')
+    }
+
     return (
         <section id="service">
-            {console.log(myListItems)}
+
             <div className="container content-lg">
                 <div className="g-heading-v7 text-center g-mb-70">
                     <h2 className="h2"><em className="block-name">Your Projects</em> </h2>
@@ -31,11 +37,10 @@ export const MyProjects = () => {
 
                 {myListItems.length === 0 ?
                     <NoDataError />
-                    : <ListItems listItems={myListItems} onDetailsClick={onDetailsClick} />
+                    : <ListItems listItems={myListItems} onDetailsClick={onDetailsClick} onDelete={onDelete} onEdit={onEdit} />
                 }
-                <ModalDetails {...details} />
+                <ModalDetails />
             </div>
         </section>
     )
-
 }

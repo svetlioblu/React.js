@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 
 import { ListItems } from "./ListItems"
 import { ModalDetails } from "./ModalDetails"
 import { NoDataError } from "../Errors/NoDataError"
 import * as dataService from "../../services/dataService.js"
+
 import { useDataContext } from "../../contexts/DataContext"
 
 
 export const Service = () => {
-    const { listItems, setlistItems } = useDataContext()
-    const [details, setDetails] = useState({})
-    
+    const { listItems, setlistItems, details, setDetails } = useDataContext()
+
+
     useEffect(() => {
         dataService.getAll()
             .then(setlistItems)
@@ -20,7 +21,7 @@ export const Service = () => {
     const onDetailsClick = (id, img, title, text) => {
         setDetails({ id, img, title, text })
     }
-
+   
     return (
         <section id="service">
             <div className="container content-lg">

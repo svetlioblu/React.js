@@ -4,10 +4,19 @@ export const DataContext = createContext()
 
 export const DataProvider = ({ children }) => {
     const [listItems, setlistItems] = useState([])
-    
+    const [details, setDetails] = useState({})
+    const [editId, seteditId] = useState('')
+    // const [myListItems, setmyListItems] = useState([])
+
+
+
     const contextValues = {
         listItems,
-        setlistItems
+        details,
+        editId,
+        setlistItems,
+        setDetails,
+        seteditId
     }
 
     return (

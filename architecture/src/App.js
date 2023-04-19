@@ -8,6 +8,7 @@ import { Register } from './components/Register/Register'
 import { Service } from './components/Service/Service'
 import { MyProjects } from './components/MyProjects/MyProjects'
 import { CreateService } from './components/Service/CreateService/CreateService'
+import { EditService } from './components/Service/EditService/EditService'
 import { Error404 } from './components/Errors/Error404'
 import { Footer } from './components/Footer/Footer'
 
@@ -29,6 +30,8 @@ function App() {
           <Route path='/services' element={<Service />} />
           <Route path='/create' element={<CreateService />} />
           <Route path='/myProjects' element={<MyProjects />} />
+          <Route path='/edit' element={<EditService />} />
+
 
 
           <Route path='/Login' element={<LogIn />} />

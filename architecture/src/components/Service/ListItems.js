@@ -3,15 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import { Item } from "./Item"
 import { useAuthContext } from "../../contexts/AuthContext"
 
-export const ListItems = ({ listItems, onDetailsClick }) => {
+export const ListItems = ({ listItems, onDetailsClick, onDelete, onEdit }) => {
     const { userAuth } = useAuthContext()
     const navigate = useNavigate()
 
     return (
         <>
             <div className="row equal-height-columns">
-                {/* {console.log(listItems)} */}
-                {listItems.map(x => <Item key={x._id} {...x} onDetailsClick={onDetailsClick} />)}
+                {listItems.map(x => <Item key={x._id} {...x} onDetailsClick={onDetailsClick} onDelete={onDelete} onEdit={onEdit} />)}
 
             </div>
             {!userAuth.accessToken ?
