@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { ListItems } from "../Service/ListItems"
 import { ModalDetails } from "../Service/ModalDetails"
@@ -9,10 +10,14 @@ import { useAuthContext } from "../../contexts/AuthContext"
 
 export const MyProjects = () => {
     const navigate = useNavigate()
-    const { listItems, setDetails,seteditId } = useDataContext()
     const { userAuth } = useAuthContext()
-    let myListItems = listItems.filter(x => x._ownerId === userAuth._id)
+    const { listItems, setDetails, seteditId, myListItems, setMyListItems } = useDataContext()
 
+    useEffect(() => {
+        const currentMyList = listItems.filter(x => x._ownerId === userAuth._id)
+        setMyListItems(currentMyList)
+    },[])
+    
     const onDetailsClick = (id, img, title, text) => {
         setDetails({ id, img, title, text })
     }

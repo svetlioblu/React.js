@@ -10,7 +10,7 @@ import { useDataContext } from "../../contexts/DataContext"
 
 
 export const Service = () => {
-    const { listItems, setlistItems, details, setDetails } = useDataContext()
+    const { listItems, setlistItems, details, onDetailsClick } = useDataContext()
 
 
     useEffect(() => {
@@ -18,10 +18,11 @@ export const Service = () => {
             .then(setlistItems)
     }, [setlistItems])
 
-    const onDetailsClick = (id, img, title, text) => {
-        setDetails({ id, img, title, text })
-    }
-   
+    
+    // const onDetailsClick = (id, img, title, text) => {
+    //     setDetails({ id, img, title, text })
+    // }
+
     return (
         <section id="service">
             <div className="container content-lg">
