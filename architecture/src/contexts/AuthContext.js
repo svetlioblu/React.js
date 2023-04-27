@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
 
         await userService.logIn(userLogIn)
         .then(setUserAuth)
-        navigate('/services')
+        navigate('/myProjects')
     }
 
     const onLogOut = async (token) => {

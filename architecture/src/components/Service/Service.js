@@ -1,6 +1,5 @@
 import { useEffect } from "react"
 
-
 import { ListItems } from "./ListItems"
 import { ModalDetails } from "./ModalDetails"
 import { NoDataError } from "../Errors/NoDataError"
@@ -10,18 +9,13 @@ import { useDataContext } from "../../contexts/DataContext"
 
 
 export const Service = () => {
-    const { listItems, setlistItems, details, onDetailsClick } = useDataContext()
-
+    const { listItems, setlistItems } = useDataContext()
 
     useEffect(() => {
         dataService.getAll()
             .then(setlistItems)
     }, [setlistItems])
 
-    
-    // const onDetailsClick = (id, img, title, text) => {
-    //     setDetails({ id, img, title, text })
-    // }
 
     return (
         <section id="service">
@@ -32,9 +26,11 @@ export const Service = () => {
 
                 {listItems.code === 404 ?
                     <NoDataError />
-                    : <ListItems listItems={listItems} onDetailsClick={onDetailsClick} />
+                    : <ListItems listItems={listItems} />
                 }
-                <ModalDetails {...details} />
+
+                <ModalDetails />
+
             </div>
         </section>
     )

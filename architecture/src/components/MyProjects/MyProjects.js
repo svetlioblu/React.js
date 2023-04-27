@@ -18,19 +18,15 @@ export const MyProjects = () => {
         setMyListItems(currentMyList)
     },[])
     
-    const onDetailsClick = (id, img, title, text) => {
-        setDetails({ id, img, title, text })
-    }
+    // const onDelete = async (id) => {
+    //     await dataService.del(id, userAuth.accessToken)
+    //     navigate('/services')
+    // }
 
-    const onDelete = async (id) => {
-        await dataService.del(id, userAuth.accessToken)
-        navigate('/services')
-    }
-
-    const onEdit = (id) => {
-        seteditId(id)
-        navigate('/edit')
-    }
+    // const onEdit = (id) => {
+    //     seteditId(id)
+    //     navigate('/edit')
+    // }
 
     return (
         <section id="service">
@@ -42,7 +38,7 @@ export const MyProjects = () => {
 
                 {myListItems.length === 0 ?
                     <NoDataError />
-                    : <ListItems listItems={myListItems} onDetailsClick={onDetailsClick} onDelete={onDelete} onEdit={onEdit} />
+                    : <ListItems listItems={myListItems} />
                 }
                 <ModalDetails />
             </div>

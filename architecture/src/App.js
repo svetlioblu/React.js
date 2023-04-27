@@ -23,12 +23,14 @@ function App() {
   return (
 //to do
 //optimise useDataContext
+
 // localstorage on checkbox
 // forms inline validation
 // layput if + 4 items
 //server responce validation on log in wrong pass and email
 // add recent news in the footer can play with the state
 // clear not used public data
+// fix details route
 //documentation
 
     <AuthProvider>

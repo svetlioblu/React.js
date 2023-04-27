@@ -1,10 +1,13 @@
 import { createContext, useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
+import * as dataService from '../services/dataService.js'
 
 
 export const DataContext = createContext()
 
 export const DataProvider = ({ children }) => {
+    const navigate = useNavigate()
     const [listItems, setlistItems] = useState([])
     const [myListItems, setMyListItems] = useState([])
     const [details, setDetails] = useState({})
@@ -12,6 +15,17 @@ export const DataProvider = ({ children }) => {
 
     const onDetailsClick = (id, img, title, text) => {
         setDetails({ id, img, title, text })
+    }
+
+    const onDelete = async (id, token) => {
+        
+        await dataService.del(id, token)
+        navigate('/myProjects')
+    }
+
+    const onEdit = (id) => {
+        seteditId(id)
+        navigate('/edit')
     }
 
     const contextValues = {
@@ -23,7 +37,9 @@ export const DataProvider = ({ children }) => {
         setlistItems,
         setDetails,
         seteditId,
-        onDetailsClick
+        onDetailsClick,
+        onDelete,
+        onEdit
     }
 
     return (

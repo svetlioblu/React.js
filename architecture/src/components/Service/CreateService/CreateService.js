@@ -3,14 +3,16 @@ import { useNavigate } from 'react-router-dom'
 
 import * as dataService from '../../../services/dataService.js'
 import { useAuthContext } from '../../../contexts/AuthContext'
+import { useDataContext } from '../../../contexts/DataContext'
+
 
 export const CreateService = () => {
     const navigate = useNavigate()
     const { userAuth } = useAuthContext()
+    const { listItems, setlistItems } = useDataContext()
 
     const [noEntry, setnoEntry] = useState(false)
     const [longLabel, setlongLabel] = useState(false)
-
 
     const [createData, setcreateData] = useState({
         label: '',
@@ -30,7 +32,9 @@ export const CreateService = () => {
             return
         }
         await dataService.create(createData, userAuth.accessToken)
-        navigate('/services')
+            // .then(setlistItems)
+            .then(navigate('/myProjects'))
+
     }
     return (
         <div className="container">
@@ -47,7 +51,7 @@ export const CreateService = () => {
                     </div>
                     <div className="input-group margin-bottom-10">
                         <span className="input-group-addon"><i className="fa fa-tasks"></i></span>
-                        <textarea rows="2" maxlength="140" name='description' className="form-control" placeholder="Short description" value={createData.description} onChange={(e) => { setcreateData(state => ({ ...state, [e.target.name]: e.target.value })) }} ></textarea>
+                        <textarea rows="2" maxLength="140" name='description' className="form-control" placeholder="Short description" value={createData.description} onChange={(e) => { setcreateData(state => ({ ...state, [e.target.name]: e.target.value })) }} ></textarea>
                     </div>
                     <div className="input-group margin-bottom-10">
                         <span className="input-group-addon"><i className="fa fa-caret-square-o-down"></i></span>
