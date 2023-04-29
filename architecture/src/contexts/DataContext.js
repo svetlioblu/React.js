@@ -18,9 +18,16 @@ export const DataProvider = ({ children }) => {
     }
 
     const onDelete = async (id, token) => {
-        
+
         await dataService.del(id, token)
-        navigate('/myProjects')
+            
+            .then(
+                () => {
+                    const filtered = myListItems.filter(x => x._id !== id)
+                    setMyListItems(filtered)
+                }
+            )
+
     }
 
     const onEdit = (id) => {

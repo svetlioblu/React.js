@@ -9,7 +9,7 @@ import { useDataContext } from '../../../contexts/DataContext'
 export const CreateService = () => {
     const navigate = useNavigate()
     const { userAuth } = useAuthContext()
-    const { listItems, setlistItems } = useDataContext()
+    const { setMyListItems } = useDataContext()
 
     const [noEntry, setnoEntry] = useState(false)
     const [longLabel, setlongLabel] = useState(false)
@@ -32,7 +32,7 @@ export const CreateService = () => {
             return
         }
         await dataService.create(createData, userAuth.accessToken)
-            // .then(setlistItems)
+            .then(res => setMyListItems(state => [...state, res]))
             .then(navigate('/myProjects'))
 
     }
