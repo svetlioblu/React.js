@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuthContext } from '../../contexts/AuthContext'
 
+
 export const LogIn = () => {
     const { onLogin } = useAuthContext()
     const [noEntry, setnoEntry] = useState(false)
@@ -11,7 +12,8 @@ export const LogIn = () => {
 
     const [userLogIn, setuserLogIn] = useState({
         email: '',
-        password: ''
+        password: '',
+        
     })
     const onLoginHandler = (e) => {
         e.preventDefault()
@@ -50,12 +52,7 @@ export const LogIn = () => {
                         <input type="text" name='password' className="form-control" placeholder="Password" value={userLogIn.password} onChange={(e) => { setuserLogIn(state => ({ ...state, [e.target.name]: e.target.value })) }} />
                     </div>
                     <hr />
-                    <div className="checkbox">
-                        <label>
-                            <input type="checkbox" />
-                            <p>Always stay signed in</p>
-                        </label>
-                    </div>
+                    
 
                     <div className="row">
                         <div className="col-md-10 col-md-offset-1">
