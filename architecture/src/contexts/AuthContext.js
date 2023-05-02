@@ -1,5 +1,6 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 import * as userService from "../services/userService.js"
 
@@ -7,7 +8,9 @@ export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
     const navigate = useNavigate()
-    const [userAuth, setUserAuth] = useState({})
+
+    //use custom hook with decorated useState insted only useState
+    const [userAuth, setUserAuth] = useLocalStorage('userAuth', {})
 
     const onLogin = async (e, userLogIn) => {
         e.preventDefault()
@@ -21,6 +24,7 @@ export const AuthProvider = ({ children }) => {
 
         await userService.logOut(token)
             .then(setUserAuth({}))
+            
     }
 
     const onRegister = async (e, userRegister) => {

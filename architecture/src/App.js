@@ -25,6 +25,7 @@ function App() {
 //optimise useDataContext -> done
 
 // localstorage on checkbox ->working Persistance
+// to improve refresh on myProjects
 // forms inline validation
 // layput if + 4 items
 //server responce validation on log in wrong pass and email
