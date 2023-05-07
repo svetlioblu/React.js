@@ -11,7 +11,7 @@ export const CreateService = () => {
     const { userAuth } = useAuthContext()
     const { setMyListItems } = useDataContext()
 
-    const [noEntry, setnoEntry] = useState(false)
+    const [noEntry, setnoEntry] = useState({})
     const [longLabel, setlongLabel] = useState(false)
 
     const [createData, setcreateData] = useState({
@@ -20,20 +20,38 @@ export const CreateService = () => {
         icon: '#',
         detailsImg: '',
         detilesTitle: '',
-        detailsText: ''
+        detailsText: '',
+
     })
+    const isEmptyValidation = () => {
+        let emptyFields = {}
+        Object.keys(createData).forEach((x) => {
+            if (createData[x] === '' || createData[x] === '#') {
+                emptyFields = { ...emptyFields, [x]: true }
+            } else {
+                emptyFields = { ...emptyFields, [x]: false }
+            }
+        })
+        setnoEntry(emptyFields)
+    }
+
     const onCreate = async (e) => {
         e.preventDefault()
-        if (createData.label === '' || createData.description === '' || createData.icon === '#' || createData.detailsImg === '') {
-            setnoEntry(true)
-            return
-        } else if (createData.label.length > 16) {
+        isEmptyValidation()
+
+
+
+        // if (createData.label === '' || createData.description === '' || createData.icon === '#' || createData.detailsImg === '') {
+        //     setnoEntry(state => ({ ...state, label: true }))
+        //     return
+        // }  
+        if (createData.label.length > 16) {
             setlongLabel(true)
             return
         }
-        await dataService.create(createData, userAuth.accessToken)
-            .then(res => setMyListItems(state => [...state, res]))
-            .then(navigate('/myProjects'))
+        // await dataService.create(createData, userAuth.accessToken)
+        //     .then(res => setMyListItems(state => [...state, res]))
+        //     .then(navigate('/myProjects'))
 
     }
     return (
@@ -41,7 +59,6 @@ export const CreateService = () => {
             <div className="reg-block">
                 <div className="reg-block-header">
                     <h2>Create a Service</h2>
-                    {noEntry && <p style={{ "color": "red" }}>There are Empty Fields !</p>}
                     {longLabel && <p style={{ "color": "red" }}>The Label should be less than 16 chars !</p>}
                 </div>
                 <form onSubmit={(e) => { onCreate(e, createData) }}>
@@ -49,6 +66,7 @@ export const CreateService = () => {
                         <span className="input-group-addon"><i className="fa fa-tag"></i></span>
                         <input type="text" name="label" className="form-control" placeholder="Service label" value={createData.label} onChange={(e) => { setcreateData(state => ({ ...state, [e.target.name]: e.target.value })) }} />
                     </div>
+                    {noEntry.label && <p style={{ "color": "red" }}>The Label is Empty !</p>}
                     <div className="input-group margin-bottom-10">
                         <span className="input-group-addon"><i className="fa fa-tasks"></i></span>
                         <textarea rows="2" maxLength="140" name='description' className="form-control" placeholder="Short description" value={createData.description} onChange={(e) => { setcreateData(state => ({ ...state, [e.target.name]: e.target.value })) }} ></textarea>

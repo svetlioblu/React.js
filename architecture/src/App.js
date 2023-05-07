@@ -24,10 +24,10 @@ function App() {
 //to do
 // optimise useDataContext -> done
 //localstorage on checkbox ->working Persistance -> done
-//documentation
+//documentation -> done and improving
 
-// to improve refresh on myProjects
 // forms inline validation
+// to improve refresh on myProjects
 // layput if + 4 items
 //server responce validation on log in wrong pass and email
 // add recent news in the footer can play with the state

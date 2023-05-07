@@ -13,7 +13,7 @@ const logIn = async (data) => {
         .catch(err => console.log(err))
 
     const result = await responce.json()
-    console.log(result)
+    
     return result
 }
 
