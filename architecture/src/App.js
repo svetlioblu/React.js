@@ -22,9 +22,10 @@ function App() {
 
   return (
 //to do
-//optimise useDataContext -> done
+// optimise useDataContext -> done
+//localstorage on checkbox ->working Persistance -> done
+//documentation
 
-// localstorage on checkbox ->working Persistance
 // to improve refresh on myProjects
 // forms inline validation
 // layput if + 4 items
@@ -32,7 +33,7 @@ function App() {
 // add recent news in the footer can play with the state
 // clear not used public data
 // fix details route
-//documentation
+// the most recent news in the footer
 
     <AuthProvider>
       <Header />
